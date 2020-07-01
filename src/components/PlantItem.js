@@ -11,7 +11,7 @@ const PlantItem = (props) => {
         alt={props.plant.name}
         />
       <p>{props.plant.name}</p>
-      <p>{props.plant.price} KD</p>
+      <p class="plant-price">{props.plant.price} KD</p>
         
       </PlantWrapper>
   

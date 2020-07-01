@@ -1,13 +1,19 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+body{
+color: ${props=>props.theme.gold};
+background-color: ${props=>props.theme.backgroundColor};
+}`;
 
 const Title = styled.h1`
   margin-top: 100px;
   text-align: center;
-  color: #2f3a18;
+  color: ${props=>props.theme.mainColor};
 `;
 const Description = styled.h4`
   text-align: center;
-  color: rgb(197, 166, 91);
+  color: ${props=>props.theme.gold};
 `;
 
 const ShopImg = styled.img`
@@ -24,19 +30,20 @@ const ListWrapper = styled.div`
 `;
 
 const PlantWrapper = styled.div`
-  margin: 20px;`;
+  margin: 20px;
 
-export { Title, Description, ShopImg, ListWrapper, PlantWrapper};
+  img {
+    width: 80px;
+    hight: 90px;
+  }
 
-const styles = {
-  text: {
-    textAlign: "center",
-  },
+  p {
+    text-align: center;
 
-  plantImg: {
-    width: "200px",
-    height: "200px",
-  },
-};
+    &.plant-price {
+      color: ${props=>props.theme.gold};
+    }
+  }
+`;
 
-export default styles;
+export { Title, Description, ShopImg, ListWrapper, PlantWrapper, GlobalStyle };
