@@ -46,4 +46,17 @@ const PlantWrapper = styled.div`
   }
 `;
 
-export { Title, Description, ShopImg, ListWrapper, PlantWrapper, GlobalStyle };
+
+const ThemeButton = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  padding: 0.25em 1em;
+  border-radius: 4px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
+`;
+
+
+
+
+export {ThemeButton, GlobalStyle, Title, Description, ShopImg, ListWrapper, PlantWrapper};
