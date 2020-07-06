@@ -2,8 +2,8 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 body{
-color: ${props=>props.theme.gold};
-background-color: ${props=>props.theme.backgroundColor};
+color: ${(props) => props.theme.gold};
+background-color: ${(props) => props.theme.backgroundColor};
 }`;
 
 const ThemeButton = styled.button`
@@ -18,11 +18,11 @@ const ThemeButton = styled.button`
 const Title = styled.h1`
   margin-top: 100px;
   text-align: center;
-  color: ${props=>props.theme.mainColor};
+  color: ${(props) => props.theme.mainColor};
 `;
 const Description = styled.h4`
   text-align: center;
-  color: ${props=>props.theme.gold};
+  color: ${(props) => props.theme.gold};
 `;
 
 const ShopImg = styled.img`
@@ -30,6 +30,22 @@ const ShopImg = styled.img`
   margin-left: auto;
   margin-right: auto;
   width: 40%;
+`;
+
+const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  img {
+    width: 40%;
+    float: left;
+  }
+
+  p {
+    vertical-align: middle;
+  }
 `;
 
 const ListWrapper = styled.div`
@@ -50,7 +66,7 @@ const PlantWrapper = styled.div`
     text-align: center;
 
     &.plant-price {
-      color: ${props=>props.theme.gold};
+      color: ${(props) => props.theme.gold};
     }
   }
 `;
@@ -59,4 +75,13 @@ export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
 
-export {GlobalStyle, ThemeButton, Title, Description, ShopImg, ListWrapper, PlantWrapper};
+export {
+  GlobalStyle,
+  DetailWrapper,
+  ThemeButton,
+  Title,
+  Description,
+  ShopImg,
+  ListWrapper,
+  PlantWrapper,
+};

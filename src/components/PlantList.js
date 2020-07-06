@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
 //Component
 import PlantItem from "./PlantItem";
-//Data
-import plants from "../plants";
 
 //Styles
 import { ListWrapper } from "../styles";
 
-const PlantList = () => {
-  const [_plants, setPlants] = useState(plants);
-  const deletePlant = (plantId) => {
-    const updatePlants = _plants.filter((plant) => plant.id !== +plantId);
-    setPlants(updatePlants);
-  };
-
-  const plantsList = _plants.map((plant) => (
-    <PlantItem plant={plant} deletePlant={deletePlant} key={plant.id} />
+const PlantList = (props) => {
+  const plantList = props.plants.map((plant) => (
+    <PlantItem
+      plant={plant}
+      key={plant.id}
+      deletePlant={props.deletePlant}
+      selectPlant={props.selectPlant}
+    />
   ));
 
-  return <ListWrapper>{plantsList}</ListWrapper>;
+  return <ListWrapper>{plantList}</ListWrapper>;
 };
 
 export default PlantList;

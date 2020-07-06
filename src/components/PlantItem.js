@@ -1,28 +1,26 @@
 import React from "react";
 
 //Styles
-import {PlantWrapper, DeleteButtonStyled} from "../styles";
+import { PlantWrapper, DeleteButtonStyled } from "../styles";
 
 const PlantItem = (props) => {
-const plant = props.plant;
+  const plant = props.plant;
 
-const handleDelete = () =>{
-  props.deletePlant(plant.id);
-  
-};
-
+  const handleDelete = () => {
+    props.deletePlant(plant.id);
+  };
 
   return (
-      <PlantWrapper>         
+    <PlantWrapper>
       <img
         src={plant.image}
         alt={plant.name}
-        />
+        onClick={() => props.selectPlant(plant.id)}
+      />
       <p>{plant.name}</p>
       <p class="plant-price">{props.plant.price} KD</p>
-        <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
-      </PlantWrapper>
-  
+      <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
+    </PlantWrapper>
   );
 };
 

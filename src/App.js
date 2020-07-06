@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 //Components
 import PlantList from "./components/PlantList";
+import PlantDetail from "./components/PlantDetail";
 
 //Styles
 import { ThemeProvider } from "styled-components";
@@ -10,8 +11,9 @@ import {
   GlobalStyle,
   Title,
   Description,
-  ShopImg
+  ShopImg,
 } from "./styles";
+import plants from "./plants";
 
 const theme = {
   light: {
@@ -30,7 +32,32 @@ const theme = {
 };
 
 function App() {
-  let [currentTheme, setCurrentTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState("light");
+  const [plant, setPlant] = useState(null);
+  const [_plants, setPlants] = useState(plants);
+
+  const selectPlant = (plantId) => {
+    const selectedPlant = _plants.find((plant) => plant.id === plantId);
+    setPlant(selectedPlant);
+  };
+
+  const deletePlant = (plantId) => {
+    const updatedPlant = _plants.filter((plant) => plant.id !== +plantId);
+    setPlants(updatedPlant);
+    setPlant(null);
+  };
+
+  const setView = () => {
+    if (plant) return <PlantDetail plant={plant} deletePlant={deletePlant} />;
+    return (
+      <PlantList
+        plants={_plants}
+        selectPlant={selectPlant}
+        deletePlant={deletePlant}
+      />
+    );
+  };
+
   const toggleTheme = () =>
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
 
@@ -47,8 +74,9 @@ function App() {
           src="https://i.pinimg.com/564x/4b/d5/10/4bd510040f679abeec83d155a1b618b0.jpg"
           alt="Store Photo"
         />
-        <PlantList />
       </div>
+
+      {setView()}
     </ThemeProvider>
   );
 }
