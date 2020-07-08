@@ -1,27 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+//Components
+import DeleteButton from "./buttons/DeleteButton";
 
 //Styles
-import { PlantWrapper, DeleteButtonStyled } from "../styles";
+import { PlantWrapper } from "../styles";
 
 const PlantItem = (props) => {
   const plant = props.plant;
 
-  const handleDelete = () => {
-    props.deletePlant(plant.id);
-  };
-
   return (
     <PlantWrapper>
-      <img
-        src={plant.image}
-        alt={plant.name}
-        onClick={() => props.selectPlant(plant.id)}
-      />
+      <Link to={`/plants/${plant.id}`}>
+        <img src={plant.image} alt={plant.name} />
+      </Link>
       <p>{plant.name}</p>
       <p class="plant-price">{props.plant.price} KD</p>
-      <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
+      <DeleteButton plantId={plant.id} deletePlant={props.deletePlant} />
     </PlantWrapper>
   );
 };
-
 export default PlantItem;

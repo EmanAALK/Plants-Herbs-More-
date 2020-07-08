@@ -2,6 +2,7 @@ const plants = [
   {
     id: 1,
     name: "Basil Plant",
+    slug: "Basil-Plant",
     price: "5",
     description: "The price is per seedling",
     image:
@@ -11,6 +12,7 @@ const plants = [
   {
     id: 2,
     name: "Rosemary Plant",
+    slug: "Rosemary-Plant",
     price: "4",
     description: "The price is per seedling",
     image:
@@ -20,6 +22,7 @@ const plants = [
   {
     id: 3,
     name: "Cherry Tomato Plant",
+    slug: "Cherry-Tomato-Plant",
     price: "8",
     description: "The price is per seedling",
     image:
