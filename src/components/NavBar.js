@@ -1,42 +1,44 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
+import logo from "../logo.jpg";
+//import { Switch } from "react-router";
 
 // Styling
-import { ThemeButton, NavStyled } from "../styles";
-import logo from "../logo.jpg";
+import { Logo, ThemeButton, NavItem } from "../styles";
+import { Link, NavLink } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = ({ currentTheme, toggleTheme }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">
-        Navbar
-      </a>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav ml-auto">
-          <Logo to="/">
-            <img src={logo} />
-          </Logo>
-          <a className="nav-item nav-link" href="#">
-            Features
-          </a>
-        </div>
+    <nav className="navbar navbar-expand-lg">
+      <Logo className="navbar-brand" to="/">
+        <img alt="logo" src={logo} />
+      </Logo>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <Link className="nav-item" to="/">
+            Home
+          </Link>
+          <NavItem className="nav-item" to="/plants">
+            Plants
+          </NavItem>
+          <ThemeButton className="nav-item" onClick={toggleTheme}>
+            {currentTheme === "light" ? "Dark" : "Light"} Mode
+          </ThemeButton>
+        </ul>
       </div>
     </nav>
   );
 };
 
 export default NavBar;
-<NavBar>
-<Link to="/">
-Home
-</Link>
-<Link to="/plants" style={{ margin: 10, float: "right" }}>
-Plants
-</Link>
-</NavBar>
-
-
-<ThemeButton onClick={toggleTheme}>
-        {theme === "light" ? "Dark" : "Light"} Mode
-      </ThemeButton>

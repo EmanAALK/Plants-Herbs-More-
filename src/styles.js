@@ -1,22 +1,24 @@
+import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+//import { Switch } from "react-router";
 
 export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
 
 export const DetailWrapper = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-
   img {
-    width: 40%;
-    float: left;
+    width: 200px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-
   p {
-    vertical-align: middle;
+    text-align: center;
+    font-size: 25px;
   }
 `;
 
@@ -31,9 +33,21 @@ color: ${(props) => props.theme.gold};
 background-color: ${(props) => props.theme.backgroundColor};
 }`;
 
-export const NavStyled = styled.nav`
-  margin: 10;
-  float: right;
+export const Logo = styled(Link)`
+  padding: 0.75em;
+
+  img {
+    width: 2rem;
+  }
+`;
+
+export const NavItem = styled(NavLink)`
+  color: ${(props) => props.theme.mainColor};
+
+  &.active {
+    color: ${(props) => props.theme.gold};
+    font-weight: bold;
+  }
 `;
 
 export const PlantWrapper = styled.div`
@@ -42,6 +56,7 @@ export const PlantWrapper = styled.div`
   img {
     width: 100px;
     height: 130px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   p {
@@ -69,7 +84,7 @@ export const ShopImg = styled.img`
 
 export const ThemeButton = styled.button`
   font-size: 1em;
-  margin: 1.25em;
+  margin: 20px;
   padding: 0.25em 1em;
   border-radius: 4px;
   background-color: ${(props) => props.theme.mainColor};
@@ -77,7 +92,7 @@ export const ThemeButton = styled.button`
 `;
 
 export const Title = styled.h1`
-  margin-top: 100px;
+  margin-top: 40;
   text-align: center;
   color: ${(props) => props.theme.mainColor};
 `;

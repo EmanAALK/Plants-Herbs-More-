@@ -7,17 +7,17 @@ import SearchBar from "./SearchBar";
 //Styles
 import { ListWrapper } from "../styles";
 
-const PlantList = (props) => {
+const PlantList = ({ plants, deletePlant, selectPlant }) => {
   const [query, setQuery] = useState("");
 
-  const plantList = props.plants
+  const plantList = plants
     .filter((plant) => plant.name.toLowerCase().includes(query.toLowerCase()))
     .map((plant) => (
       <PlantItem
         plant={plant}
         key={plant.id}
-        deletePlant={props.deletePlant}
-        selectPlant={props.selectPlant}
+        deletePlant={deletePlant}
+        selectPlant={selectPlant}
       />
     ));
   return (

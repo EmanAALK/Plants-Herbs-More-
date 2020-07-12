@@ -5,9 +5,9 @@ import { Link, Redirect, useParams } from "react-router-dom";
 import { DetailWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
 
-const PlantDetail = (props) => {
+const PlantDetail = ({ plants, deletePlant }) => {
   const { plantSlug } = useParams();
-  const plant = props.plants.find((plant) => plant.slug === plantSlug);
+  const plant = plants.find((plant) => plant.slug === plantSlug);
   if (!plant) return <Redirect to="/plants" />;
   return (
     <DetailWrapper>
@@ -18,7 +18,7 @@ const PlantDetail = (props) => {
       <img src={plant.image} alt={plant.name} />
       <p>{plant.description}</p>
       <p>{plant.price}</p>
-      <DeleteButton plantId={plant.id} deletePlant={props.deletePlant} />
+      <DeleteButton plantId={plant.id} deletePlant={deletePlant} />
     </DetailWrapper>
   );
 };

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import { Link } from "react-router-dom";
 
 //Components
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
 import PlantList from "./components/PlantList";
 import PlantDetail from "./components/PlantDetail";
-import Home from "./components/Home";
 
 //Styles
 import { ThemeProvider } from "styled-components";
-import { ThemeButton, GlobalStyle } from "./styles";
+import { GlobalStyle, NavItem } from "./styles";
 import plants from "./plants";
-import NavBar from "./components/NavBar";
 
 const theme = {
   light: {
@@ -31,8 +30,8 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  // const [plant, setPlant] = useState(null);
   const [_plants, setPlants] = useState(plants);
+  const [value, setValue] = useState("light");
 
   const deletePlant = (plantId) => {
     const updatedPlant = _plants.filter((plant) => plant.id !== +plantId);
@@ -45,8 +44,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
+      <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
+
       <GlobalStyle />
-      <NavBar />
       <Switch>
         <Route path="/plants/:plantSlug">
           <PlantDetail plants={_plants} deletePlant={deletePlant} />
