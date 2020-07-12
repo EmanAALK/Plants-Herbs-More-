@@ -1,10 +1,9 @@
 import React from "react";
 import logo from "../logo.jpg";
-//import { Switch } from "react-router";
 
 // Styling
 import { Logo, ThemeButton, NavItem } from "../styles";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ currentTheme, toggleTheme }) => {
   return (

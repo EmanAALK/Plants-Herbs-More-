@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 
 //Styles
 import { ListWrapper } from "../styles";
+import AddButton from "./buttons/AddButton";
 
 const PlantList = ({ plants, deletePlant, selectPlant }) => {
   const [query, setQuery] = useState("");
@@ -24,6 +25,7 @@ const PlantList = ({ plants, deletePlant, selectPlant }) => {
     <>
       <SearchBar setQuery={setQuery} />
       <ListWrapper>{plantList}</ListWrapper>;
+      <AddButton />
     </>
   );
 };

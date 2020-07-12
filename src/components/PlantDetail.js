@@ -17,7 +17,7 @@ const PlantDetail = ({ plants, deletePlant }) => {
       <h2>{plant.name}</h2>
       <img src={plant.image} alt={plant.name} />
       <p>{plant.description}</p>
-      <p>{plant.price}</p>
+      <p>{plant.price} KD </p>
       <DeleteButton plantId={plant.id} deletePlant={deletePlant} />
     </DetailWrapper>
   );

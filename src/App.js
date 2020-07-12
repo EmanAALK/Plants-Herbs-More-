@@ -9,7 +9,7 @@ import PlantDetail from "./components/PlantDetail";
 
 //Styles
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, NavItem } from "./styles";
+import { GlobalStyle } from "./styles";
 import plants from "./plants";
 
 const theme = {
@@ -31,7 +31,10 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [_plants, setPlants] = useState(plants);
-  const [value, setValue] = useState("light");
+
+  const createPlant = (newPlant) => {
+    setPlants([..._plants, newPlant]);
+  };
 
   const deletePlant = (plantId) => {
     const updatedPlant = _plants.filter((plant) => plant.id !== +plantId);
@@ -52,7 +55,11 @@ function App() {
           <PlantDetail plants={_plants} deletePlant={deletePlant} />
         </Route>
         <Route path="/plants">
-          <PlantList plants={_plants} deletePlant={deletePlant} />
+          <PlantList
+            createPlant={createPlant}
+            plants={_plants}
+            deletePlant={deletePlant}
+          />
         </Route>
         <Route path="/">
           <Home />

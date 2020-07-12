@@ -2,6 +2,15 @@ import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 //import { Switch } from "react-router";
 
+export const CreateButtonStyled = styled.button`
+color: ${(props) => props.theme.backgroundColor};
+background-color: ${(props) => props.theme.mainColor};
+&:hover {
+  color: ${(props) => props.theme.mainColor}
+  background-color: ${(props) => props.theme.backgroundColor};
+}
+`;
+
 export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
@@ -29,6 +38,7 @@ export const Description = styled.h4`
 
 export const GlobalStyle = createGlobalStyle`
 body{
+  margin: 40px;
 color: ${(props) => props.theme.gold};
 background-color: ${(props) => props.theme.backgroundColor};
 }`;
@@ -66,6 +76,11 @@ export const PlantWrapper = styled.div`
       color: ${(props) => props.theme.gold};
     }
   }
+`;
+
+export const PlusCircle = styled.button`
+  size="4em";
+  float: right;
 `;
 
 export const SearchBarStyled = styled.input`
