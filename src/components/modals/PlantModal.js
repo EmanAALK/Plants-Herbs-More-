@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 
 //Styles
-import { createButtonStyled } from "../../styles";
+import { CreateButtonStyled } from "../../styles";
 
 const customStyles = {
   content: {
@@ -80,7 +80,7 @@ const PlantModel = ({ isOpen, closeModal, createPlant }) => {
             className="form-control"
           />
         </div>
-        <createButtonStyled>Create</createButtonStyled>
+        <CreateButtonStyled>Create</CreateButtonStyled>
       </form>
     </Modal>
   );

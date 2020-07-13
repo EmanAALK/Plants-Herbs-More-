@@ -5,7 +5,6 @@ import PlantModal from "../modals/PlantModal";
 
 //Styles
 import { BsPlusCircle } from "react-icons/bs";
-import PlusCircle from "../../styles";
 
 const AddButton = ({ createPlant }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,9 +13,8 @@ const AddButton = ({ createPlant }) => {
 
   return (
     <>
-      {/* <PlusCircle> */}
       <BsPlusCircle onClick={openModal} />
-      {/* </PlusCircle> */}
+
       <PlantModal
         isOpen={isOpen}
         closeModal={closeModal}
