@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
+import plants from "./plants";
 
 //Components
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import PlantList from "./components/PlantList";
 import PlantDetail from "./components/PlantDetail";
+import PlantList from "./components/PlantList";
 
 //Styles
-import { ThemeProvider } from "styled-components";
+import AddButton from "./components/buttons/AddButton";
 import { GlobalStyle } from "./styles";
-import plants from "./plants";
+import { ThemeProvider } from "styled-components";
 
 const theme = {
   light: {
@@ -55,16 +56,13 @@ function App() {
           <PlantDetail plants={_plants} deletePlant={deletePlant} />
         </Route>
         <Route path="/plants">
-          <PlantList
-            createPlant={createPlant}
-            plants={_plants}
-            deletePlant={deletePlant}
-          />
+          <PlantList plants={_plants} deletePlant={deletePlant} />
         </Route>
         <Route path="/">
           <Home />
         </Route>
       </Switch>
+      <AddButton createPlant={createPlant} />
     </ThemeProvider>
   );
 }

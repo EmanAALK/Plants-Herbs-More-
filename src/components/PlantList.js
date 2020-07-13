@@ -6,10 +6,8 @@ import SearchBar from "./SearchBar";
 
 //Styles
 import { ListWrapper } from "../styles";
-import AddButton from "./buttons/AddButton";
-import PlantModel from "./modals/PlantModal";
 
-const PlantList = ({ plants, deletePlant, selectPlant, createPlant }) => {
+const PlantList = ({ plants, deletePlant, selectPlant }) => {
   const [query, setQuery] = useState("");
 
   const plantList = plants
@@ -26,8 +24,6 @@ const PlantList = ({ plants, deletePlant, selectPlant, createPlant }) => {
     <>
       <SearchBar setQuery={setQuery} />
       <ListWrapper>{plantList}</ListWrapper>;
-      <AddButton />
-      <PlantModel createPlant={createPlant} />
     </>
   );
 };
