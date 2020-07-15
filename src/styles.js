@@ -50,6 +50,9 @@ export const Logo = styled(Link)`
     width: 2rem;
   }
 `;
+export const NavStyling = styled.p`
+  text-align: center;
+`;
 
 export const NavItem = styled(NavLink)`
   color: ${(props) => props.theme.mainColor};
@@ -98,6 +101,7 @@ export const ShopImg = styled.img`
 `;
 
 export const ThemeButton = styled.button`
+  align-items: left;
   font-size: 1em;
   margin: 20px;
   padding: 0.25em 1em;
@@ -117,4 +121,8 @@ export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+`;
+
+export const UpdateButtonStyled = styled.p`
+  color: ${(props) => props.theme.gold};
 `;

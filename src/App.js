@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import plants from "./plants";
 
 //Components
 import Home from "./components/Home";
@@ -31,17 +30,6 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [_plants, setPlants] = useState(plants);
-
-  const createPlant = (newPlant) => {
-    setPlants([..._plants, newPlant]);
-  };
-
-  const deletePlant = (plantId) => {
-    const updatedPlant = _plants.filter((plant) => plant.id !== +plantId);
-    setPlants(updatedPlant);
-    // setPlant(null);
-  };
 
   const toggleTheme = () =>
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
@@ -53,16 +41,16 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/plants/:plantSlug">
-          <PlantDetail plants={_plants} deletePlant={deletePlant} />
+          <PlantDetail />
         </Route>
         <Route path="/plants">
-          <PlantList plants={_plants} deletePlant={deletePlant} />
+          <PlantList />
         </Route>
         <Route path="/">
           <Home />
         </Route>
       </Switch>
-      <AddButton createPlant={createPlant} />
+      <AddButton />
     </ThemeProvider>
   );
 }
