@@ -4,7 +4,7 @@ import React from "react";
 import plantStore from "../../stores/plantStore";
 
 //Styles
-import { DeleteButtonStyled } from "../../styles";
+import { DeleteButtonStyled } from "./styles";
 
 const DeleteButton = (props) => {
   const handleDelete = () => {

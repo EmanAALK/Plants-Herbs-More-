@@ -1,6 +1,6 @@
 import React from "react";
 //Styles
-import { Description, ShopImg, Title } from "../styles";
+import { Description, ShopImg, Title } from "./styles";
 
 const Home = () => {
   return (

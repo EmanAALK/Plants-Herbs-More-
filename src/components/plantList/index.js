@@ -3,13 +3,13 @@ import { observer } from "mobx-react";
 
 //Component
 import PlantItem from "./PlantItem";
-import SearchBar from "./SearchBar";
+import SearchBar from "../searchBar/SearchBar";
 
 //Stores
-import plantStore from "../stores/plantStore";
+import plantStore from "../../stores/plantStore";
 
 //Styles
-import { ListWrapper } from "../styles";
+import { ListWrapper } from "./styles";
 
 const PlantList = ({ deletePlant, selectPlant }) => {
   const [query, setQuery] = useState("");

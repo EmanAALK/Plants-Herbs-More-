@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 
 //Components
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import PlantDetail from "./components/PlantDetail";
-import PlantList from "./components/PlantList";
+import Home from "./components/home/Home";
+import NavBar from "./components/navBar/NavBar";
+import PlantDetail from "./components/plantDetail/index";
+import PlantList from "./components/plantList/index";
 
 //Styles
 import AddButton from "./components/buttons/AddButton";
@@ -29,10 +29,13 @@ const theme = {
 };
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState("light");
-
-  const toggleTheme = () =>
-    setCurrentTheme(currentTheme === "light" ? "dark" : "light");
+  const savedTheme = localStorage.getItem("theme") ?? "light";
+  const [currentTheme, setCurrentTheme] = useState(savedTheme);
+  const toggleTheme = () => {
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setCurrentTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>

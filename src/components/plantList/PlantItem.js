@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 
 //Components
-import DeleteButton from "./buttons/DeleteButton";
-import UpdateButton from "./buttons/UpdateButton";
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton";
 
 //Styles
-import { PlantWrapper } from "../styles";
+import { PlantWrapper } from "./styles";
 
 const PlantItem = ({ plant, deletePlant }) => {
   return (

@@ -1,11 +1,18 @@
 import { decorate, observable } from "mobx";
 import slugify from "react-slugify";
-
-//Data
-import plants from "../plants";
+import axios from "axios";
 
 class PlantStore {
-  plants = plants;
+  plants = [];
+
+  fetchPlants = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/plants");
+      this.plants = res.data;
+    } catch (error) {
+      console.error("CookieStore -> fetchCookies -> error", error);
+    }
+  };
 
   createPlant = (newPlant) => {
     newPlant.id = this.plants[this.plants.length - 1].id + 1;
@@ -27,4 +34,5 @@ class PlantStore {
 decorate(PlantStore, { plants: observable });
 
 const plantStore = new PlantStore();
+plantStore.fetchPlants();
 export default plantStore;

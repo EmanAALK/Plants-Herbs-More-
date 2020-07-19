@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import PlantModal from "../modals/PlantModal";
 
 // Styling
-import { UpdateButtonStyled } from "../../styles";
+import { UpdateButtonStyled } from "./styles";
 
 const UpdateButton = ({ plant }) => {
   const [isOpen, setIsOpen] = useState(false);
