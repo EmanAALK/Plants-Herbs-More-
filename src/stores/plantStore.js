@@ -9,7 +9,7 @@ class PlantStore {
       const res = await axios.get("http://localhost:8000/plants");
       this.plants = res.data;
     } catch (error) {
-      console.error("CookieStore -> fetchCookies -> error", error);
+      console.error("PlantStore -> fetchPlant -> error", error);
     }
   };
 
@@ -18,7 +18,7 @@ class PlantStore {
       const res = await axios.post("http://localhost:8000/plants", newPlant);
       this.plants.push(res.data);
     } catch (error) {
-      console.error("CookieStore -> createPlant -> error", error);
+      console.error("PlantStore -> createPlant -> error", error);
     }
   };
 
@@ -27,7 +27,7 @@ class PlantStore {
       await axios.delete(`http://localhost:8000/plants/${plantId}`);
       this.plants = this.plants.filter((plant) => plant.id !== plantId);
     } catch (error) {
-      console.error("CookieStore -> deletePlant -> error", error);
+      console.error("PlantStore -> deletePlant -> error", error);
     }
   };
 
