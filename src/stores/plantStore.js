@@ -1,5 +1,4 @@
 import { decorate, observable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
 
 class PlantStore {
@@ -14,14 +13,22 @@ class PlantStore {
     }
   };
 
-  createPlant = (newPlant) => {
-    newPlant.id = this.plants[this.plants.length - 1].id + 1;
-    newPlant.slug = slugify(newPlant.name);
-    this.plants.push(newPlant);
+  createPlant = async (newPlant) => {
+    try {
+      const res = await axios.post("http://localhost:8000/plants", newPlant);
+      this.plants.push(res.data);
+    } catch (error) {
+      console.error("CookieStore -> createPlant -> error", error);
+    }
   };
 
-  deletePlant = (plantId) => {
-    this.plants = this.plants.filter((plant) => plant.id !== plantId);
+  deletePlant = async (plantId) => {
+    try {
+      await axios.delete(`http://localhost:8000/plants/${plantId}`);
+      this.plants = this.plants.filter((plant) => plant.id !== plantId);
+    } catch (error) {
+      console.error("CookieStore -> deletePlant -> error", error);
+    }
   };
 
   updatePlant = (updatedPlant) => {
