@@ -31,10 +31,17 @@ class PlantStore {
     }
   };
 
-  updatePlant = (updatedPlant) => {
-    console.log("plantStore -> updatePlant -> updatedPlant", updatedPlant);
-    const plant = this.plants.find((plant) => plant.id === updatedPlant.id);
-    for (const key in plant) plant[key] = updatedPlant[key];
+  updatePlant = async (updatedPlant) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/plants/${updatedPlant.id}`,
+        updatedPlant
+      );
+      const plant = this.plants.find((plant) => plant.id === updatedPlant.id);
+      for (const key in plant) plant[key] = updatedPlant[key];
+    } catch (error) {
+      console.log("PlantStore -> updatePlant -> error", error);
+    }
   };
 }
 
