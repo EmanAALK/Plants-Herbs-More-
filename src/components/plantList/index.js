@@ -4,12 +4,14 @@ import { observer } from "mobx-react";
 //Component
 import PlantItem from "./PlantItem";
 import SearchBar from "../searchBar/SearchBar";
+import AddButton from "../buttons/AddButton";
 
 //Stores
 import plantStore from "../../stores/plantStore";
 
 //Styles
 import { ListWrapper } from "./styles";
+import { PlusCircle } from "../buttons/styles";
 
 const PlantList = ({ deletePlant, selectPlant }) => {
   const [query, setQuery] = useState("");
@@ -27,7 +29,10 @@ const PlantList = ({ deletePlant, selectPlant }) => {
   return (
     <>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{plantList}</ListWrapper>;
+      <ListWrapper>{plantList}</ListWrapper>
+      <PlusCircle>
+        <AddButton />
+      </PlusCircle>
     </>
   );
 };

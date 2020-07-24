@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 
 //Components
-import Home from "./components/home/Home";
+import Home from "./home/Home";
 import NavBar from "./components/navBar/NavBar";
 import PlantDetail from "./components/plantDetail/index";
 import PlantList from "./components/plantList/index";
 
 //Styles
-import AddButton from "./components/buttons/AddButton";
-import { GlobalStyle } from "./styles";
+import {
+  Description,
+  Footer,
+  GlobalStyle,
+  Header,
+  ThemeButton,
+  Title,
+} from "./styles";
+
 import { ThemeProvider } from "styled-components";
 
 const theme = {
@@ -18,6 +25,8 @@ const theme = {
     backgroundColor: "#F6F9F1",
     gold: "rgb(197, 166, 91)",
     red: "#ff3232",
+    footerBackground: "#FFFFFF",
+    footerText: "#000000",
   },
 
   dark: {
@@ -25,6 +34,8 @@ const theme = {
     backgroundColor: "#2f3a18",
     gold: "rgb(197, 166, 91)",
     red: "#ff3232",
+    footerBackground: "#000000",
+    footerText: "#FFFFFF",
   },
 };
 
@@ -39,21 +50,29 @@ function App() {
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
-      <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-
+      <Header>
+        <ThemeButton className='nav-item' onClick={toggleTheme}>
+          {currentTheme === "light" ? "Dark" : "Light"} Mode
+        </ThemeButton>
+        <Title>Plants, Herbs & More</Title>
+        <Description>Live a Natural Life</Description>
+        <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
+      </Header>
       <GlobalStyle />
       <Switch>
-        <Route path="/plants/:plantSlug">
+        <Route path='/plants/:plantSlug'>
           <PlantDetail />
         </Route>
-        <Route path="/plants">
+        <Route path='/plants'>
           <PlantList />
         </Route>
-        <Route path="/">
+        <Route path='/'>
           <Home />
         </Route>
       </Switch>
-      <AddButton />
+      <Footer className='footer'>
+        <h5>© 2020 Eman AL-Kandari </h5>
+      </Footer>
     </ThemeProvider>
   );
 }
