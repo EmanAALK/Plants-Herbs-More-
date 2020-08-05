@@ -13,10 +13,10 @@ import plantStore from "../../stores/plantStore";
 import { ListWrapper } from "./styles";
 import { PlusCircle } from "../buttons/styles";
 
-const PlantList = ({ deletePlant, selectPlant }) => {
+const PlantList = ({ plants, deletePlant, selectPlant }) => {
   const [query, setQuery] = useState("");
 
-  const plantList = plantStore.plants
+  const plantList = plants
     .filter((plant) => plant.name.toLowerCase().includes(query.toLowerCase()))
     .map((plant) => (
       <PlantItem

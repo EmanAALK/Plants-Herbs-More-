@@ -15,10 +15,10 @@ import { DetailWrapper } from "./styles";
 const PlantDetail = () => {
   const { plantSlug } = useParams();
   const plant = plantStore.plants.find((plant) => plant.slug === plantSlug);
-  if (!plant) return <Redirect to="/plants" />;
+  if (!plant) return <Redirect to='/plants' />;
   return (
     <>
-      <Link to="/plants">
+      <Link to='/plants'>
         <p>Back to Plants</p>
       </Link>
       <DetailWrapper>

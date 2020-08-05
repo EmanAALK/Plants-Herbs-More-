@@ -18,6 +18,9 @@ const PlantModel = ({ isOpen, closeModal, oldPlant }) => {
     }
   );
 
+  const handelImage = (event) =>
+    setPlant({ ...plant, image: event.target.files[0] });
+
   const handleChange = (event) => {
     setPlant({ ...plant, [event.target.name]: event.target.value });
   };
@@ -77,8 +80,8 @@ const PlantModel = ({ isOpen, closeModal, oldPlant }) => {
           <input
             // required
             name='image'
-            type='text'
-            onChange={handleChange}
+            type='file'
+            onChange={handelImage}
             className='form-control'
             value={plant.image}
           />

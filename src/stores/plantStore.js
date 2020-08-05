@@ -3,11 +3,13 @@ import axios from "axios";
 
 class PlantStore {
   plants = [];
+  loading = false;
 
   fetchPlants = async () => {
     try {
       const res = await axios.get("http://localhost:8000/plants");
       this.plants = res.data;
+      this.loading = true;
     } catch (error) {
       console.error("PlantStore -> fetchPlant -> error", error);
     }
@@ -15,7 +17,9 @@ class PlantStore {
 
   createPlant = async (newPlant) => {
     try {
-      const res = await axios.post("http://localhost:8000/plants", newPlant);
+      const formData = new FormData();
+      for (const key in newPlant) formData.append(key, newPlant[key]);
+      const res = await axios.post("http://localhost:8000/plants", formData);
       this.plants.push(res.data);
     } catch (error) {
       console.error("PlantStore -> createPlant -> error", error);
@@ -31,8 +35,10 @@ class PlantStore {
     }
   };
 
-  updatePlant = async (updatedPlant) => {
+  updatePlant = async (updatedPlant, newPlant) => {
     try {
+      const formData = new FormData();
+      for (const key in newPlant) formData.append(key, newPlant[key]);
       await axios.put(
         `http://localhost:8000/plants/${updatedPlant.id}`,
         updatedPlant

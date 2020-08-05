@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router";
+import { observer } from "mobx-react";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Components
-import Home from "./home/Home";
+import Routes from "./components/Routers/Routes";
 import NavBar from "./components/navBar/NavBar";
-import PlantDetail from "./components/plantDetail/index";
-import PlantList from "./components/plantList/index";
+
+//Stores
+import vendorStore from "./stores/vendorStore";
 
 //Styles
+import { ThemeProvider } from "styled-components";
 import {
   Description,
   Footer,
@@ -16,8 +20,6 @@ import {
   ThemeButton,
   Title,
 } from "./styles";
-
-import { ThemeProvider } from "styled-components";
 
 const theme = {
   light: {
@@ -59,22 +61,12 @@ function App() {
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       </Header>
       <GlobalStyle />
-      <Switch>
-        <Route path='/plants/:plantSlug'>
-          <PlantDetail />
-        </Route>
-        <Route path='/plants'>
-          <PlantList />
-        </Route>
-        <Route path='/'>
-          <Home />
-        </Route>
-      </Switch>
       <Footer className='footer'>
         <h5>© 2020 Eman AL-Kandari </h5>
       </Footer>
+      {vendorStore.loading ? <h1>Loading</h1> : <Routes />}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);
