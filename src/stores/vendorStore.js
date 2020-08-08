@@ -3,13 +3,13 @@ import axios from "axios";
 
 class VendorStore {
   vendors = [];
-  loading = false;
+  loading = true;
 
   fetchVendors = async () => {
     try {
       const res = await axios.get("http://localhost:8000/vendors");
       this.vendors = res.data;
-      this.loading = true;
+      this.loading = false;
     } catch (error) {
       console.error("VendorStore -> fetchVendor -> error", error);
     }

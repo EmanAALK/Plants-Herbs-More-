@@ -20,6 +20,7 @@ import {
   ThemeButton,
   Title,
 } from "./styles";
+import plantStore from "./stores/plantStore";
 
 const theme = {
   light: {
@@ -64,7 +65,11 @@ function App() {
       <Footer className='footer'>
         <h5>© 2020 Eman AL-Kandari </h5>
       </Footer>
-      {vendorStore.loading ? <h1>Loading</h1> : <Routes />}
+      {vendorStore.loading || plantStore.loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <Routes />
+      )}
     </ThemeProvider>
   );
 }

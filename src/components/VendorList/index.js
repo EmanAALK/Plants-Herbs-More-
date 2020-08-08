@@ -13,22 +13,15 @@ import vendorStore from "../../stores/vendorStore";
 import { ListWrapper } from "./styles";
 import { PlusCircle } from "../buttons/styles";
 
-const VendorList = ({ deleteVendor, selectVendor }) => {
+const VendorList = () => {
   const [query, setQuery] = useState("");
 
   const vendorList = vendorStore.vendors
     .filter((vendor) => vendor.name.toLowerCase().includes(query.toLowerCase()))
-    .map((vendor) => (
-      <VendorItem
-        vendor={vendor}
-        key={vendor.id}
-        deleteVendor={deleteVendor}
-        selectVendor={selectVendor}
-      />
-    ));
+    .map((vendor) => <VendorItem vendor={vendor} key={vendor.id} />);
   return (
     <>
-      <h1>Vendors</h1>
+      <h1>Shops</h1>
       <SearchBar setQuery={setQuery} />
       <ListWrapper>{vendorList}</ListWrapper>
       <PlusCircle>

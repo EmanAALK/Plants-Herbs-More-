@@ -6,23 +6,26 @@ import Home from "../../home/Home";
 import PlantDetail from "../plantDetail/index";
 import PlantList from "../plantList/index";
 
+//Stores
+import plantStore from "../../stores/plantStore";
+
 const Routes = () => {
   return (
     <Switch>
-      {/* <Route path='/vendors/:vendorSlug'>
+      <Route path='/'>
+        <Home />
+      </Route>
+      <Route path='/vendors/:vendorSlug'>
         <VendorDetail />
-        </Route>
-        <Route path='/vendors'>
+      </Route>
+      <Route path='/vendors'>
         <VendorList />
-      </Route> */}
+      </Route>
       <Route path='/plants/:plantSlug'>
         <PlantDetail />
       </Route>
       <Route path='/plants'>
-        <PlantList />
-      </Route>
-      <Route path='/'>
-        <Home />
+        <PlantList plants={plantStore.plants} />
       </Route>
     </Switch>
   );

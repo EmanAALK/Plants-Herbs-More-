@@ -1,26 +1,32 @@
-import { decorate, observable } from "mobx";
+import { decorate, observable, isObservableArray } from "mobx";
 import axios from "axios";
 
 class PlantStore {
   plants = [];
-  loading = false;
+  loading = true;
 
   fetchPlants = async () => {
     try {
       const res = await axios.get("http://localhost:8000/plants");
       this.plants = res.data;
-      this.loading = true;
+      this.loading = false;
     } catch (error) {
       console.error("PlantStore -> fetchPlant -> error", error);
     }
   };
 
-  createPlant = async (newPlant) => {
+  getPlantById = (plantId) => this.plants.find((plant) => plant.id === plantId);
+
+  createPlant = async (newPlant, vendor) => {
     try {
       const formData = new FormData();
       for (const key in newPlant) formData.append(key, newPlant[key]);
-      const res = await axios.post("http://localhost:8000/plants", formData);
+      const res = await axios.post(
+        `http://localhost:8000/vendors/${vendorId}/plants`,
+        formData
+      );
       this.plants.push(res.data);
+      vendor.plants.push({ id: res.data.id });
     } catch (error) {
       console.error("PlantStore -> createPlant -> error", error);
     }
@@ -51,7 +57,7 @@ class PlantStore {
   };
 }
 
-decorate(PlantStore, { plants: observable });
+decorate(PlantStore, { plants: observable, loading: observable });
 
 const plantStore = new PlantStore();
 plantStore.fetchPlants();

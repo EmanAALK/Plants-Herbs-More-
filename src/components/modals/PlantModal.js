@@ -8,7 +8,7 @@ import plantStore from "../../stores/plantStore";
 import { CreateButtonStyled } from "../../styles";
 import { customStyles } from "./styles";
 
-const PlantModel = ({ isOpen, closeModal, oldPlant }) => {
+const PlantModel = ({ vendor, isOpen, closeModal, oldPlant }) => {
   const [plant, setPlant] = useState(
     oldPlant ?? {
       name: "",
@@ -27,7 +27,7 @@ const PlantModel = ({ isOpen, closeModal, oldPlant }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    plantStore[oldPlant ? "updatePlant" : "createPlant"](plant);
+    plantStore[oldPlant ? "updatePlant" : "createPlant"](plant, vendor);
     closeModal();
   };
   return (

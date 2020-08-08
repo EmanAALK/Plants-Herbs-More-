@@ -10,11 +10,11 @@ const NavBar = () => {
         <NavHome className='nav-item' to='/'>
           <p>Home</p>
         </NavHome>
-        <NavItem className='nav-item' to='/plants'>
-          <p> Design</p>
+        <NavItem className='nav-item' to='/vendors'>
+          <p> Shops</p>
         </NavItem>
         <NavItem className='nav-item' to='/plants'>
-          <p> Shop</p>
+          <p> Products</p>
         </NavItem>
       </div>
     </NavStyling>

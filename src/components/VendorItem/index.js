@@ -9,7 +9,7 @@ import UpdateButton from "../buttons/UpdateButton";
 //Styles
 import { VendorWrapper } from "./styles";
 
-const VendorItem = ({ vendor, deleteVendor }) => {
+const VendorItem = ({ vendor }) => {
   return (
     <VendorWrapper>
       <Link to={`/vendors/${vendor.slug}`}>

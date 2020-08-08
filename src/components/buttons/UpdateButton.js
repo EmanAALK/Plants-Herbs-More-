@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 // Components
 import PlantModal from "../modals/PlantModal";
+import VendorModal from "../modals/VendorModal";
 
 // Styling
 import { UpdateButtonStyled } from "./styles";
+import VendorModel from "../modals/VendorModal";
 
 const UpdateButton = ({ plant }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +15,15 @@ const UpdateButton = ({ plant }) => {
   return (
     <>
       <UpdateButtonStyled onClick={openModal}>Update</UpdateButtonStyled>
-      <PlantModal isOpen={isOpen} closeModal={closeModal} oldPlant={plant} />
+      {vendor ? (
+        <VendorModel
+          sOpen={isOpen}
+          closeModal={closeModal}
+          oldVendor={vendor}
+        />
+      ) : (
+        <PlantModal isOpen={isOpen} closeModal={closeModal} oldPlant={plant} />
+      )}
     </>
   );
 };
