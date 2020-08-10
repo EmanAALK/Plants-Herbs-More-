@@ -2,6 +2,7 @@ import React from "react";
 
 //Buttons
 import SignupButton from "../buttons/SignupButton";
+import SigninButton from "../buttons/SigninButton";
 
 // Styling
 import { NavHome, NavItem, NavStyling } from "./styles";
@@ -20,6 +21,7 @@ const NavBar = () => {
           <p> Products</p>
         </NavItem>
         <SignupButton />
+        <SigninButton />
       </div>
     </NavStyling>
   );
