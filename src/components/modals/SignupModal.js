@@ -33,7 +33,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
       style={customStyles}
       contentLabel='Pant Modal'
     >
-      <h3>New Plant</h3>
+      <h3>Sign up</h3>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label>Username</label>
@@ -97,4 +97,4 @@ const SignupModal = ({ isOpen, closeModal }) => {
   );
 };
 
-export default PlantModel;
+export default SignupModel;
