@@ -1,5 +1,7 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+
+//Stores
+import instance from "./instance";
 
 class VendorStore {
   vendors = [];
@@ -7,7 +9,7 @@ class VendorStore {
 
   fetchVendors = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/vendors");
+      const res = await instance.get("/vendors");
       this.vendors = res.data;
       this.loading = false;
     } catch (error) {
