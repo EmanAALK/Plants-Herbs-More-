@@ -7,7 +7,7 @@ import VendorModel from "../modals/VendorModal";
 //Styles
 import { BsPlusCircle } from "react-icons/bs";
 
-const AddButton = () => {
+const AddButton = ({ vendor, vendorId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);

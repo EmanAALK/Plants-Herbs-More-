@@ -5,6 +5,8 @@ import { Route, Switch } from "react-router";
 import Home from "../../home/Home";
 import PlantDetail from "../plantDetail/index";
 import PlantList from "../plantList/index";
+import VendorDetail from "../VendorDetail/index";
+import VendorList from "../VendorList/index";
 
 //Stores
 import plantStore from "../../stores/plantStore";
