@@ -1,4 +1,4 @@
-import { SignupButtonStyled } from "./styles";
+import { AuthButtonStyled } from "./styles";
 import SignupModal from "../modals/SignupModal";
 
 const SignupButton = () => {
@@ -7,7 +7,7 @@ const SignupButton = () => {
   const openModal = () => setIsOpen(true);
   return (
     <>
-      <SignupButtonStyled onClick={openModal}>Sign Up</SignupButtonStyled>
+      <AuthButtonStyled onClick={openModal}>Sign Up</AuthButtonStyled>
       <SignupModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
