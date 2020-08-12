@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
+import { Redirect } from "react-router";
 
 //Component
 import PlantItem from "./PlantItem";
 import SearchBar from "../searchBar/SearchBar";
-import AddButton from "../buttons/AddButton";
 
 //Stores
-import plantStore from "../../stores/plantStore";
+import authStore from "../../stores/authStore";
 
 //Styles
 import { ListWrapper } from "./styles";
-import { PlusCircle } from "../buttons/styles";
 
 const PlantList = ({ plants = [] }) => {
   const [query, setQuery] = useState("");
 
-  const plantList = plantStore.plants
+  if (!authStore.user || authStore.user.role !== "admin")
+    return <Redirect to='/' />;
+
+  const plantList = plants
     .filter((plant) => plant.name.toLowerCase().includes(query.toLowerCase()))
     .map((plant) => <PlantItem plant={plant} key={plant.id} />);
+
   return (
     <>
       <SearchBar setQuery={setQuery} />
       <ListWrapper>{plantList}</ListWrapper>
-      <PlusCircle>
-        <AddButton />
-      </PlusCircle>
     </>
   );
 };

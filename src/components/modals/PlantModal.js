@@ -18,12 +18,13 @@ const PlantModel = ({ vendor, isOpen, closeModal, oldPlant }) => {
     }
   );
 
+  const handleChange = (event) => {
+    const newPlant = { ...plant, [event.target.name]: event.target.value };
+    setPlant(newPlant);
+  };
+
   const handelImage = (event) =>
     setPlant({ ...plant, image: event.target.files[0] });
-
-  const handleChange = (event) => {
-    setPlant({ ...plant, [event.target.name]: event.target.value });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -83,7 +84,6 @@ const PlantModel = ({ vendor, isOpen, closeModal, oldPlant }) => {
             type='file'
             onChange={handelImage}
             className='form-control'
-            value={plant.image}
           />
         </div>
         <CreateButtonStyled>

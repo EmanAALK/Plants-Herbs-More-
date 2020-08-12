@@ -17,16 +17,12 @@ class VendorStore {
     }
   };
 
-  getVendorById = (vendorId) =>
-    this.vendors.find((vendor) => vendor.id === vendorId);
-
-  createVendor = async (newVendor, vendor) => {
+  createVendor = async (newVendor) => {
     try {
       const formData = new FormData();
       for (const key in newVendor) formData.append(key, newVendor[key]);
-      const res = await instance.post(`/vendors/${vendorId}/vendors`, formData);
+      const res = await instance.post(`/vendors`, formData);
       this.vendors.push(res.data);
-      vendor.vendors.push({ id: res.data.id });
     } catch (error) {
       console.error("VendorStore -> createVendor -> error", error);
     }
@@ -41,15 +37,16 @@ class VendorStore {
     }
   };
 
-  updateVendor = async (updatedVendor, newVendor) => {
+  updateVendor = async (updatedVendor) => {
     try {
       const formData = new FormData();
-      for (const key in newVendor) formData.append(key, newVendor[key]);
-      await instance.put(`/vendors/${updatedVendor.id}`, updatedVendor);
+      for (const key in updatedVendor) formData.append(key, updatedVendor[key]);
+      await instance.put(`/vendors/${updatedVendor.id}`, formData);
       const vendor = this.vendors.find(
         (vendor) => vendor.id === updatedVendor.id
       );
-      for (const key in vendor) vendor[key] = updatedVendor[key];
+      for (const key in updatedVendor) vendor[key] = updatedVendor[key];
+      vendor.image = URL.createObjectURL(updatedVendor.image);
     } catch (error) {
       console.log("VendorStore -> updateVendor -> error", error);
     }

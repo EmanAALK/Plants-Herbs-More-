@@ -6,3 +6,17 @@ export const ListWrapper = styled.div`
   justify-content: center;
   display: flex;
 `;
+
+export const VendorWrapper = styled.div`
+  margin: 20px;
+
+  img {
+    width: 100px;
+    height: 130px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  p {
+    text-align: center;
+  }
+`;

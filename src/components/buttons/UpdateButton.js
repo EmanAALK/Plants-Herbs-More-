@@ -6,12 +6,13 @@ import VendorModal from "../modals/VendorModal";
 
 // Styling
 import { UpdateButtonStyled } from "./styles";
-import VendorModel from "../modals/VendorModal";
 
 const UpdateButton = ({ vendor, plant }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
+
   return (
     <>
       <UpdateButtonStyled onClick={openModal}>Update</UpdateButtonStyled>

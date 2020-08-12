@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 
 //Stores
-import plantStore from "../../stores/plantStore";
+import authStore from "../../stores/authStore";
 
 //Styles
 import { AuthButtonStyled } from "../../styles";
@@ -10,22 +10,25 @@ import { customStyles } from "./styles";
 
 const SignupModal = ({ isOpen, closeModal }) => {
   const [user, setUser] = useState({
+    username: "",
+    email: "",
     firstName: "",
     lastName: "",
-    username: "",
     password: "",
-    email: "",
+    role: "vendor",
   });
 
-  const handleChange = (event) =>
-    setUser({ ...user, [event.target.name]: event.target.value });
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        authStore.signup(user);
-        closeModal();
-    };
+  const handleChange = (event) => {
+    const newUser = { ...user, [event.target.name]: event.target.value };
+    setUser(newUser);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    authStore.signup(user);
+    closeModal();
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -33,16 +36,17 @@ const SignupModal = ({ isOpen, closeModal }) => {
       style={customStyles}
       contentLabel='Pant Modal'
     >
-      <h3>Sign up</h3>
+      <h3>New User</h3>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label>Username</label>
           <input
+            required
             name='username'
-            value={user.username}
             type='text'
-            className='form-control'
             onChange={handleChange}
+            className='form-control'
+            value={user.username}
           />
         </div>
         <div className='form-group row'>
@@ -50,20 +54,20 @@ const SignupModal = ({ isOpen, closeModal }) => {
             <label>First Name</label>
             <input
               name='firstName'
-              value={user.firstName}
               type='text'
-              className='form-control'
               onChange={handleChange}
+              className='form-control'
+              value={user.firstName}
             />
           </div>
           <div className='col-6'>
             <label>Last Name</label>
             <input
               name='lastName'
-              value={user.lastName}
               type='text'
-              className='form-control'
               onChange={handleChange}
+              className='form-control'
+              value={user.lastName}
             />
           </div>
         </div>
@@ -71,26 +75,26 @@ const SignupModal = ({ isOpen, closeModal }) => {
           <label>Email</label>
           <input
             name='email'
-            value={user.email}
             type='text'
-            className='form-control'
             onChange={handleChange}
+            className='form-control'
+            value={user.email}
           />
         </div>
         <div className='form-group'>
           <label>Password</label>
           <input
+            required
             name='password'
-            value={user.password}
             type='text'
-            className='form-control'
             onChange={handleChange}
+            className='form-control'
+            value={user.password}
           />
         </div>
 
         <>
           <AuthButtonStyled>Sign up</AuthButtonStyled>
-          <SignupModal isOpen={isOpen} closeModal={closeModal} />
         </>
       </form>
     </Modal>

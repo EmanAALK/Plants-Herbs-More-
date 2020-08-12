@@ -1,12 +1,12 @@
 import React from "react";
-import { Link, Redirect, useParams } from "react-router-dom";
 import { observer } from "mobx-react";
+import { Link, Redirect, useParams } from "react-router-dom";
 
 //Components
 import DeleteButton from "../buttons/DeleteButton";
 import UpdateButton from "../buttons/UpdateButton";
 
-//Stors
+//Stores
 import plantStore from "../../stores/plantStore";
 
 //styles
@@ -14,8 +14,11 @@ import { DetailWrapper } from "./styles";
 
 const PlantDetail = () => {
   const { plantSlug } = useParams();
+
   const plant = plantStore.plants.find((plant) => plant.slug === plantSlug);
+
   if (!plant) return <Redirect to='/plants' />;
+
   return (
     <>
       <Link to='/plants'>

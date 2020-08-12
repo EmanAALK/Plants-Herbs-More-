@@ -23,9 +23,11 @@ class PlantStore {
     try {
       const formData = new FormData();
       for (const key in newPlant) formData.append(key, newPlant[key]);
-      const res = await instance.post(`/vendors/${vendorId}/plants`, formData);
-      this.plants.push(res.data);
-      vendor.plants.push({ id: res.data.id });
+      const res = await instance.post(`/vendors/${vendor.id}/plants`, formData);
+
+      const plant = res.data;
+      this.plants.push(plant);
+      vendor.plants.push(plant);
     } catch (error) {
       console.error("PlantStore -> createPlant -> error", error);
     }
@@ -43,10 +45,11 @@ class PlantStore {
   updatePlant = async (updatedPlant, newPlant) => {
     try {
       const formData = new FormData();
-      for (const key in newPlant) formData.append(key, newPlant[key]);
-      await instance.put(`/plants/${updatedPlant.id}`, updatedPlant);
+      for (const key in newPlant) formData.append(key, updatedPlant[key]);
+      await instance.put(`/plants/${updatedPlant.id}`, formData);
       const plant = this.plants.find((plant) => plant.id === updatedPlant.id);
-      for (const key in plant) plant[key] = updatedPlant[key];
+      for (const key in updatedPlant) plant[key] = updatedPlant[key];
+      plant.image = URL.createObjectURL(updatedPlant.image);
     } catch (error) {
       console.log("PlantStore -> updatePlant -> error", error);
     }

@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+
+//Styles
 import { AuthButtonStyled } from "./styles";
+import SigninModal from "../modals/SigninModal";
 
 const SigninButton = () => {
-  return <AuthButtonStyled>Sign in</AuthButtonStyled>;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+
+  return (
+    <>
+      <AuthButtonStyled onClick={openModal}> Sign in</AuthButtonStyled>;
+      <SigninModal isOpen={isOpan} closeModal={closeModal} />
+    </>
+  );
 };
 
 export default SigninButton;

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
+import { useHistory, Redirect, Link } from "react-router-dom";
 
-//Stores
+// Stores
 import authStore from "../../stores/authStore";
 
-//Styles
-import { AuthButtonStyled } from "../../styles";
-import { customStyles } from "./styles";
+// Styles
+import { CreateButtonStyled, LabelStyled } from "../modals/styles";
+import { Title } from "../../styles";
 
-const SigninModal = ({ isOpen, closeModal }) => {
+const Signin = () => {
+  const history = useHistory();
+
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -22,20 +24,17 @@ const SigninModal = ({ isOpen, closeModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signin(user);
-    closeModal();
+    history.push("/");
   };
 
+  if (authStore.user) return <Redirect to='/' />;
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel='Pant Modal'
-    >
-      <h3>New User</h3>
+    <div className='container'>
+      <Title>Sign in</Title>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
-          <label>Username</label>
+          <LabelStyled>Username</LabelStyled>
           <input
             required
             name='username'
@@ -46,20 +45,26 @@ const SigninModal = ({ isOpen, closeModal }) => {
           />
         </div>
         <div className='form-group'>
-          <label>Password</label>
+          <LabelStyled>Password</LabelStyled>
           <input
             required
             name='password'
-            type='text'
+            type='password'
             onChange={handleChange}
             className='form-control'
             value={user.password}
           />
         </div>
-        <AuthButtonStyled>Sign in</AuthButtonStyled>
+
+        <CreateButtonStyled className='btn float-right'>
+          Sign in
+        </CreateButtonStyled>
+        <Link to='/signup'>
+          <p>Are you a new user?</p>
+        </Link>
       </form>
-    </Modal>
+    </div>
   );
 };
 
-export default SigninModel;
+export default Signin;

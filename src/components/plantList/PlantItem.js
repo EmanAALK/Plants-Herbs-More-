@@ -9,16 +9,16 @@ import UpdateButton from "../buttons/UpdateButton";
 //Styles
 import { PlantWrapper } from "./styles";
 
-const PlantItem = ({ plant, deletePlant }) => {
+const PlantItem = ({ plant }) => {
   return (
     <PlantWrapper>
       <Link to={`/plants/${plant.slug}`}>
         <img src={plant.image} alt={plant.name} />
       </Link>
       <p>{plant.name}</p>
-      <p class="plant-price">{plant.price} KD</p>
+      <p class='plant-price'>{plant.price} KD</p>
       <UpdateButton plant={plant} />
-      <DeleteButton plantId={plant.id} deletePlant={deletePlant} />
+      <DeleteButton plantId={plant.id} />
     </PlantWrapper>
   );
 };

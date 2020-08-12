@@ -16,12 +16,13 @@ const VendorModel = ({ isOpen, closeModal, oldVendor }) => {
     }
   );
 
-  const handelImage = (event) =>
-    setPlant({ ...vendor, image: event.target.files[0] });
-
   const handleChange = (event) => {
-    setPlant({ ...vendor, [event.target.name]: event.target.value });
+    const newVendor = { ...vendor, [event.target.name]: event.target.value };
+    setVendor(newVendor);
   };
+
+  const handelImage = (event) =>
+    setVendor({ ...vendor, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,9 +34,9 @@ const VendorModel = ({ isOpen, closeModal, oldVendor }) => {
       isOpen={isOpen}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel='Vendor Modal'
+      contentLabel='Shop Modal'
     >
-      <h3>New Vendor</h3>
+      <h3>New Shop</h3>
       <form onSubmit={handleSubmit}>
         <div className='form-group row'>
           <div className='col-6'>
@@ -53,12 +54,10 @@ const VendorModel = ({ isOpen, closeModal, oldVendor }) => {
         <div className='form-group'>
           <label>Image</label>
           <input
-            // required
             name='image'
             type='file'
             onChange={handelImage}
             className='form-control'
-            value={vendor.image}
           />
         </div>
         <CreateButtonStyled>
