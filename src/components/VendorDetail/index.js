@@ -3,12 +3,12 @@ import { observer } from "mobx-react";
 import { Redirect, useParams } from "react-router-dom";
 
 //Buttons
-import AddButton from "../buttons/AddButton";
-import UpdateButton from "../buttons/UpdateButton";
-import DeleteButton from "../buttons/DeleteButton";
+import AddButton from "../Buttons/AddButton";
+import UpdateButton from "../Buttons/UpdateButton";
+import DeleteButton from "../Buttons/DeleteButton";
 
 //Components
-import PlantList from "../plantList/index";
+import PlantList from "../PlantList/index";
 
 //Stores
 import plantStore from "../../stores/plantStore";

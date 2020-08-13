@@ -13,7 +13,7 @@ const SigninButton = () => {
   return (
     <>
       <AuthButtonStyled onClick={openModal}> Sign in</AuthButtonStyled>;
-      <SigninModal isOpen={isOpan} closeModal={closeModal} />
+      <SigninModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };

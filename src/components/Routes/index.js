@@ -3,9 +3,9 @@ import { Route, Switch } from "react-router";
 import { observer } from "mobx-react";
 
 //Components
-import Home from "../../home/Home";
-import PlantDetail from "../plantDetail/index";
-import PlantList from "../plantList/index";
+import Home from "../../components/Home/index";
+import PlantDetail from "../PlantDetail/index";
+import PlantList from "../PlantList/index";
 import VendorDetail from "../VendorDetail/index";
 import VendorList from "../VendorList/index";
 import Signin from "../authentication/Signin";

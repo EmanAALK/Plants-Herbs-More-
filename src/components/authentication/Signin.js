@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useHistory, Redirect, Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 // Stores
 import authStore from "../../stores/authStore";
@@ -9,8 +10,6 @@ import { CreateButtonStyled, LabelStyled } from "../modals/styles";
 import { Title } from "../../styles";
 
 const Signin = () => {
-  const history = useHistory();
-
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -24,7 +23,6 @@ const Signin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signin(user);
-    history.push("/");
   };
 
   if (authStore.user) return <Redirect to='/' />;
@@ -67,4 +65,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default observer(Signin);

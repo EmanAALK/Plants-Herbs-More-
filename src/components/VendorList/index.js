@@ -3,7 +3,7 @@ import { Redirect } from "react-router";
 import { observer } from "mobx-react";
 
 //Component
-import AddButton from "../buttons/AddButton";
+import AddButton from "../Buttons/AddButton";
 import VendorItem from "./VendorItem";
 import SearchBar from "../searchBar/SearchBar";
 

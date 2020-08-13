@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useHistory, Redirect, Link } from "react-router-dom";
+import { observer } from "mobx-react";
+import { Redirect, Link } from "react-router-dom";
 
 // Stores
 import authStore from "../../stores/authStore";
@@ -9,7 +10,6 @@ import { CreateButtonStyled, LabelStyled } from "../modals/styles";
 import { Title } from "../../styles";
 
 const SignupModal = () => {
-  const history = useHistory();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -27,7 +27,6 @@ const SignupModal = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signup(user);
-    history.push("/");
   };
 
   if (authStore.user) return <Redirect to='/' />;
@@ -99,4 +98,4 @@ const SignupModal = () => {
   );
 };
 
-export default SignupModal;
+export default observer(SignupModal);

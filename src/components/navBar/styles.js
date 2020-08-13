@@ -29,3 +29,7 @@ export const NavItem = styled(NavLink)`
     font-weight: bold;
   }
 `;
+
+export const UsernameStyled = styled.p`
+  padding: 0.25em 1em;
+`;

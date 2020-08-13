@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import authStore from "../../stores/authStore";
 
 //Styles
-import { AuthButtonStyled } from "../../styles";
+import { AuthButtonStyled } from "../../components/Buttons/styles";
 import { customStyles } from "./styles";
 
 const SignupModal = ({ isOpen, closeModal }) => {
@@ -101,4 +101,4 @@ const SignupModal = ({ isOpen, closeModal }) => {
   );
 };
 
-export default SignupModel;
+export default SignupModal;

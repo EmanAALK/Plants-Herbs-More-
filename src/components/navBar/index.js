@@ -2,14 +2,15 @@ import React from "react";
 import { observer } from "mobx-react";
 
 //Buttons
-import SignupButton from "../buttons/SignupButton";
-import SigninButton from "../buttons/SigninButton";
+// import SignupButton from "../Buttons/SignupButton";
+// import SigninButton from "../Buttons/SigninButton";
 
 //Stores
 import authStore from "../../stores/authStore";
+import { FiLogOut } from "react-icons/fi";
 
 // Styles
-import { NavHome, NavItem, NavStyling } from "./styles";
+import { NavHome, NavItem, NavStyling, UsernameStyled } from "./styles";
 
 const NavBar = () => {
   return (
@@ -35,12 +36,12 @@ const NavBar = () => {
               </NavItem>
             </>
           )}
-          <SignupButton />
-          <SigninButton />
+          {/* <SignupButton />
+          <SigninButton /> */}
         </ul>
       </div>
     </NavStyling>
   );
 };
 
-export default NavBar;
+export default observer(NavBar);
